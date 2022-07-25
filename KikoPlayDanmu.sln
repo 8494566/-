@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KikoPlayDanmu", "KikoPlayDanmu\KikoPlayDanmu.vcxproj", "{EFAC90AD-0790-47C4-886B-423B4EEA2F44}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C5DB41FD-6A8F-49CB-A84F-FC60CB52B854} = {C5DB41FD-6A8F-49CB-A84F-FC60CB52B854}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LibraryManagers", "LibraryManagers\LibraryManagers.vcxproj", "{C5DB41FD-6A8F-49CB-A84F-FC60CB52B854}"
 EndProject
