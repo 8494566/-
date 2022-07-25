@@ -53,18 +53,11 @@ void widget::playAnimation()
 // 用线程来发消息给widget进行显示
 void ImgThread::run()
 {
-    QVariant var;
-    QObject* obj;
     QImage image;
-    static uint i = 0,id,allLoaded = 0;
     QString dir = QCoreApplication::applicationDirPath();
-
-    var = this->property("PARENT");
-    obj = var.value<QObject*>();
-    widget *p = qobject_cast<widget *>(obj);
     if (!isInterruptionRequested())
     {
         image.load(dir + QString("/images/lena2.jpg"));
-        emit sigMsg(image.rgbSwapped());
+        emit sigMsg(image.rgbSwapped()); //qimage加载的颜色通道顺序和opengl显示的颜色通道顺序不一致,调换R通道和B通道
     }
 }

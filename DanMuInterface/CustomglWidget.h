@@ -38,13 +38,13 @@ protected:
 	void resizeGL(int w, int h);
 
 private:
-	uchar* imageData_;           //纹理显示的数据源
-	QSize imageSize_;            //图片尺寸
-	QSize Ortho2DSize_;          //窗口尺寸
-	QOpenGLTexture* texture_;
-	GLuint textureId_;           //纹理对象ID
-	int vertexPos_[Pos_Max];     //窗口坐标
-	float texturePos_[Pos_Max];  //纹理坐标
+	uchar* m_imageData;           //纹理显示的数据源
+	QSize m_imageSize;            //图片尺寸
+	QSize m_Ortho2DSize;          //窗口尺寸
+	QOpenGLTexture* m_texture;
+	GLuint m_textureId;           //纹理对象ID
+	int m_vertexPos[Pos_Max];     //窗口坐标
+	float m_texturePos[Pos_Max];  //纹理坐标
 	QImage m_img;
 };
 
