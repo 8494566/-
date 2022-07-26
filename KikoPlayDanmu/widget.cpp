@@ -54,7 +54,7 @@ void widget::playAnimation()
 	m_rollingAni->setPropertyName("CustomGLWidgetPos");
 	m_rollingAni->setStartValue(QPoint(0, 0));
 	m_rollingAni->setEndValue(QPoint(width(), 0));
-	m_rollingAni->setDuration(2000);
+	m_rollingAni->setDuration(3000);
 	m_rollingAni->start();
 }
 
