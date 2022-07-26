@@ -17,13 +17,21 @@ widget::widget(QWidget *parent) :
 
 	DanMuInterface* Interface = (DanMuInterface*)pm->getPlugin("DanMuInterface");
     m_GLWidget = Interface->createCustomGLWidget(this);
+    m_GLWidget->setFixedSize(size());
 
     m_rollingAni = new QPropertyAnimation();
 
-    connect(&m_t,&ImgThread::sigMsg,this,[=](const QImage &img){m_GLWidget->setImageData(img);});
 
-    m_t.setProperty("PARENT",QVariant::fromValue(qobject_cast<QObject*>(this)));
-    m_t.start();
+	QImage image;
+	QString dir = QCoreApplication::applicationDirPath();
+	image.load(dir + QString("/images/lena2.jpg"));
+	m_GLWidget->setImageData(image.rgbSwapped());
+	//m_GLWidget->setImageDataPost(100, 0);
+
+    //connect(&m_t,&ImgThread::sigMsg,this,[=](const QImage &img){m_GLWidget->setImageData(img);});
+
+    //m_t.setProperty("PARENT",QVariant::fromValue(qobject_cast<QObject*>(this)));
+    //m_t.start();
 
     QTimer* rollingTimer = new QTimer(this);
     rollingTimer->setInterval(3000);
@@ -42,12 +50,12 @@ widget::~widget()
 
 void widget::playAnimation()
 {
-    m_rollingAni->setTargetObject(m_GLWidget);
-    m_rollingAni->setPropertyName("pos");
-    m_rollingAni->setStartValue(QPoint(0, 0));
-    m_rollingAni->setEndValue(QPoint(width(), 0));
-    m_rollingAni->setDuration(2000);
-    m_rollingAni->start();
+	m_rollingAni->setTargetObject(m_GLWidget);
+	m_rollingAni->setPropertyName("CustomGLWidgetPos");
+	m_rollingAni->setStartValue(QPoint(0, 0));
+	m_rollingAni->setEndValue(QPoint(width(), 0));
+	m_rollingAni->setDuration(2000);
+	m_rollingAni->start();
 }
 
 // 用线程来发消息给widget进行显示
